@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Heebo";
+  src: url("./asests/fonts/Heebo/static/Heebo-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background-color: #FFFF;
+
+}
+
+:root {
+  --color-primary: #FF6464;
+  --color-dark--primary: #21243D;
+  --color-light: #8695A4;
+  --color-secondary: #00A8CC;
+  --color-dark-secondary: #000000;
+}
