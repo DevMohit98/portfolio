@@ -61,7 +61,7 @@ const Navbar = () => {
                 key={index}
                 component={NavLink}
                 to={item.path}
-                className="!capitalize !font-medium !text-xl !text-[--color-dark-secondary]"
+                className="!capitalize !font-medium !text-xl"
                 style={({ isActive }) => ({
                   color: isActive
                     ? "var(--color-primary)"
