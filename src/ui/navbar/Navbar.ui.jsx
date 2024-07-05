@@ -28,7 +28,7 @@ const Navbar = () => {
       <List>
         {navItems.map((item) => (
           <ListItem key={item.link} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
+            <ListItemButton sx={{ textAlign: "center" }} component={NavLink} to={item.path}>
               <ListItemText
                 primary={item.link}
                 className="!capitalize !font-medium !text-xl !text-[--color-dark-secondary]"
@@ -56,12 +56,17 @@ const Navbar = () => {
           <Box
             sx={{ display: { xs: "none", sm: "block" } }}
             className="ml-auto">
-            {navItems.map((item,index) => (
+            {navItems.map((item, index) => (
               <Button
                 key={index}
                 component={NavLink}
                 to={item.path}
-                className="!capitalize !font-medium !text-xl !text-[--color-dark-secondary]">
+                className="!capitalize !font-medium !text-xl !text-[--color-dark-secondary]"
+                style={({ isActive }) => ({
+                  color: isActive
+                    ? "var(--color-primary)"
+                    : "var(--color-dark-secondary)",
+                })}>
                 {item.link}
               </Button>
             ))}
