@@ -1,0 +1,26 @@
+
+{
+    "work":[
+        {   "id":1,
+            "title":"Designing Dashboards",
+            "description":"Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+            "year":"2020",
+            "type":"dashboard",
+            "image":"./assets/png/work1.png"
+        },
+        {   "id":2,
+            "title":"Designing Dashboards",
+            "description":"Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+            "year":"2020",
+            "type":"dashboard",
+            "image":"./asests/png/work1.png"
+        },
+        {   "id":3,
+            "title":"Designing Dashboards",
+            "description":"Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+            "year":"2020",
+            "type":"dashboard",
+            "image":"./assets/png/work1.png"
+        }
+    ]
+}

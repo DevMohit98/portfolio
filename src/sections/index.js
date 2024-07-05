@@ -1,1 +1,1 @@
-export {HeroSection} from "./home"
+export { HeroSection, RecentSection, WorkSection } from "./home";

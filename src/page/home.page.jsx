@@ -1,5 +1,11 @@
-import { HeroSection } from "../sections";
+import { RecentSection, WorkSection, HeroSection } from "../sections";
 const Home = () => {
-  return <HeroSection />;
+  return (
+    <>
+      <HeroSection/>
+      <RecentSection />
+      <WorkSection/>
+    </>
+  );
 };
 export default Home;

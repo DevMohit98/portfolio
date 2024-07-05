@@ -1,26 +1,23 @@
-import { useState } from "react";
-import {
-  AppBar,
-  Box,
-  CssBaseline,
-  Drawer,
-  IconButton,
-  ListItem,
-  List,
-  ListItemButton,
-  ListItemText,
-  Toolbar,
-  Button,
-} from "@mui/material";
-import { NavLink } from "react-router-dom";
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import CssBaseline from "@mui/material/CssBaseline";
+import Drawer from "@mui/material/Drawer";
+import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
+import Toolbar from "@mui/material/Toolbar";
+import Button from "@mui/material/Button";
+import { NavLink } from "react-router-dom";
 
 const drawerWidth = 240;
-const navItems = ["Blog", "Work", "Contact"];
+const navItems = [{link:"work", path:"/work"}, {link:"blog",path:"/blog"}, {link:"contact",path:"/"}];
 
-function NavBar(props) {
-  const { window } = props;
-  const [mobileOpen, setMobileOpen] = useState(false);
+const Navbar = () => {
+  const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -30,9 +27,12 @@ function NavBar(props) {
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <List>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
+          <ListItem key={item.link} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
+              <ListItemText
+                primary={item.link}
+                className="!capitalize !font-medium !text-xl !text-[--color-dark-secondary]"
+              />
             </ListItemButton>
           </ListItem>
         ))}
@@ -40,45 +40,36 @@ function NavBar(props) {
     </Box>
   );
 
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
-
-  const navLinkClass = ({ isActive }) =>
-    isActive
-      ? "text-[--color-primary] !text-xl mx-2 !font-medium"
-      : "text-[--color-dark-secondary] !text-xl mx-2 !font-medium";
-
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar
-        component="nav"
-        position="fixed"
-        className="!bg-inherit !shadow-none">
+      <AppBar component="nav" className="!bg-white !shadow-none">
         <Toolbar>
           <IconButton
-            className="!ml-auto"
             aria-label="open drawer"
             edge="end"
             onClick={handleDrawerToggle}
+            className="!text-[--color-dark-secondary] !ml-auto"
             sx={{ mr: 2, display: { sm: "none" } }}>
             <MenuIcon />
           </IconButton>
           <Box
             sx={{ display: { xs: "none", sm: "block" } }}
             className="ml-auto">
-            {navItems.map((item) => (
-              <NavLink key={item} to={`/${item}`} className={navLinkClass}>
-                {item}
-              </NavLink>
+            {navItems.map((item,index) => (
+              <Button
+                key={index}
+                component={NavLink}
+                to={item.path}
+                className="!capitalize !font-medium !text-xl !text-[--color-dark-secondary]">
+                {item.link}
+              </Button>
             ))}
           </Box>
         </Toolbar>
       </AppBar>
-      <Box component="nav">
+      <nav>
         <Drawer
-          anchor="right"
-          container={container}
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
@@ -94,13 +85,11 @@ function NavBar(props) {
           }}>
           {drawer}
         </Drawer>
-      </Box>
-      <Box component="main" sx={{ flexGrow: 1 }}>
+      </nav>
+      <Box component="main">
         <Toolbar />
-        {props.children}
       </Box>
     </Box>
   );
-}
-
-export default NavBar;
+};
+export default Navbar;
